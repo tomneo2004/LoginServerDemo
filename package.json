@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "redis-server": "./redis-5.0.5/src/redis-server"
   },
   "author": "",
   "license": "ISC",
