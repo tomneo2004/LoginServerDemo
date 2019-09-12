@@ -5,14 +5,14 @@ const userAuth = (req, res, next)=>{
     passport.authenticate('login', (err, user, info)=>{
 
         if(err){
-            return res.status(400).json({status:'Fail', message:err});
+            return res.status(400).json({...{}, status:'Fail', info});
         }
 
         if(!user){
-            return res.status(400).json({status:'Fail', message:'user does not exist'});
+            return res.status(400).json({...{}, status:'Fail', info});
         }
 
-        return res.status(200).json({status:'OK', message:'login successful'});
+        return res.status(200).json({...{}, status:'OK', info});
 
 
     })(req, res, next);

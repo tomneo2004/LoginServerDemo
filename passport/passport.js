@@ -10,26 +10,20 @@ passport.use('login', new localStrategy({
 
   (email, password, done)=>{
 
-    let userExist = false;
-
-    for(let i=0; i<userData.length; i++){
-        
-        let user = userData[i];
-
-        if(user.email === email && user.password === password){
-
-            userExist = true;
-        }
-    }
+    let userExist = userData.find(user=>(user.email===email && user.password===password));
 
     if(userExist){
-        return done(null, true);
+        return done(null, userExist, {
+            message:'login succssful',
+            error:null
+        });
     }
     else{
-        return done(null, false);
+        return done(null, false,{
+            message:'user not found',
+            error:null
+        });
     }
-
-    return done(null, false);
 }));
 
 module.exports = passport;
